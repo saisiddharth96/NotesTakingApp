@@ -1,4 +1,4 @@
-console.log('Starting Notes.js');
+//console.log('Starting Notes.js');
 
 const fs = require("fs");
 
@@ -15,11 +15,13 @@ var saveNotes = (notes) =>{
     fs.writeFileSync("notes-data.json",JSON.stringify(notes));
 };
 
+
 var addNote = (title,body) =>{
     var notes = fetchNotes();
     var note = {
         title,body
     };
+    
     var duplicateNotes = notes.filter((note)=> note.title === title);
     if(duplicateNotes.length === 0){
         notes.push(note);
@@ -29,7 +31,8 @@ var addNote = (title,body) =>{
 };
 
 var listNotes = () =>{
-    console.log(`Here's a list of your notes!`);
+  //  console.log(`Here's a list of your notes!`);
+   return fetchNotes();
 };
 
 var readNote = (title)=>{
@@ -48,11 +51,11 @@ var removeNote = (title) =>{
     return notes.length !== filteredNotes.length;    
 };
 
-var logNote = (noteToRead) =>{
+var logNote = (note) =>{
     debugger; 
-    console.log("--");
-    console.log(`Title :- ${noteToRead.title}`);
-    console.log(`Note:- ${noteToRead.body}:`);
+    console.log("  ");
+    console.log(`Title :- ${note.title}`);
+    console.log(`Note:- ${note.body}`);
 };
 
 
